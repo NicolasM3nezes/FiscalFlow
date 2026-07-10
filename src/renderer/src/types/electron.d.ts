@@ -3,15 +3,11 @@ export {};
 declare global {
   interface Window {
     fiscalFlow: {
-      browser: {
+      workmotor: {
         open(): Promise<{
           success: boolean;
           message: string;
         }>;
-
-        close(): Promise<void>;
-
-        isOpen(): Promise<boolean>;
       };
     };
   }

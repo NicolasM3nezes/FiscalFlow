@@ -1,21 +1,14 @@
 function App() {
-  async function openBrowser() {
-    const result = await window.fiscalFlow.browser.open();
+  async function abrirWorkMotor() {
+    const result = await window.fiscalFlow.workmotor.open();
 
     console.log(result);
   }
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <button onClick={openBrowser}>
-        Abrir Chromium
+    <div>
+      <button onClick={abrirWorkMotor}>
+        Abrir WorkMotor
       </button>
     </div>
   );

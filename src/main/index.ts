@@ -1,6 +1,8 @@
 import { app, BrowserWindow, shell } from "electron";
 import { join } from "path";
 
+import { registerWorkMotorIpc } from "./ipc/workmotor.ipc";
+
 import { electronApp, is, optimizer } from "@electron-toolkit/utils";
 
 import icon from "../../resources/icon.png?asset";
@@ -27,9 +29,9 @@ function createWindow(): void {
   mainWindow.on("ready-to-show", () => {
     mainWindow.show();
 
-    if (is.dev) {
+  /*  if (is.dev) {
       mainWindow.webContents.openDevTools();
-    }
+    }*/
   });
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -49,6 +51,7 @@ function createWindow(): void {
 
 app.whenReady().then(() => {
   electronApp.setAppUserModelId("com.fiscalflow");
+  registerWorkMotorIpc();
 
   app.on("browser-window-created", (_, window) => {
     optimizer.watchWindowShortcuts(window);
